@@ -1,0 +1,26 @@
+.headerMain{
+    position: relative;
+    height: 10%;
+    width: 100%;
+    padding-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 10px;
+    border: 0.1px solid black;
+}
+
+.logo{
+    padding-left: 15px;
+    padding-right: 15px;
+    height: 50px;
+    width: auto;
+    max-width: 150px;
+    object-fit: contain;
+}
+
+.headerP{
+    font-size: 26px;
+    margin: 0px;
+    font-weight: bold;
+}
