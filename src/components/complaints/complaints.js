@@ -54,21 +54,29 @@ function Complaints() {
   if (error) return <p style={{ color: "red" }}>{error}</p>;
 
   return (
-    <div className="complaintsContainer">
-      <h2>All Complaints</h2>
+    <div className="complaintsBg">
+      <h2 className="complaintsTitle">All Complaints</h2>
 
       {complaints.length === 0 ? (
-        <p>No complaints found.</p>
+        <p className="noComplaints">No complaints found.</p>
       ) : (
-        <div className="complaintList">
+        <div className="complaintsGrid">
           {complaints.map((complaint) => (
             <div key={complaint._id} className="complaintCard">
-              <p className="complaintDesc">{complaint.complaintDescription}</p>
+              <p className="description">
+                {complaint.complaintDescription}
+              </p>
 
-              <div className="complaintFooter">
-                <span>Upvotes: {complaint.upvotes}</span>
-                <button onClick={() => handleUpvote(complaint._id)}>
-                  👍 Upvote
+              <div className="cardBottom">
+                <span className="upvotes">
+                  👍 {complaint.upvotes}
+                </span>
+
+                <button
+                  className="upvoteBtn"
+                  onClick={() => handleUpvote(complaint._id)}
+                >
+                  Upvote
                 </button>
               </div>
             </div>
@@ -77,6 +85,7 @@ function Complaints() {
       )}
     </div>
   );
+
 }
 
 export default Complaints;

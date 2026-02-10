@@ -1,51 +1,115 @@
-.complaintsContainer {
-  width: 80%;
-  margin: 20px auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.complaintList {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
+/* ---------- FULL PAGE GRADIENT (LIKE FIRST IMAGE) ---------- */
+.complaintsBg {
+  min-height: 100vh;
   width: 100%;
+  background: radial-gradient(
+      circle at top left,
+      #7dd3fc,
+      transparent 40%
+    ),
+    radial-gradient(circle at bottom right, #c084fc, transparent 40%),
+    linear-gradient(135deg, #4f46e5, #6d28d9);
+
+  padding: 60px 40px;
+  color: rgb(255, 255, 255);
 }
 
-.complaintCard {
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  padding: 15px;
-  background-color: #fafafa;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-.complaintDesc {
-  font-size: 16px;
-  color: #333;
-  margin-bottom: 10px;
+/* ---------- TITLE ---------- */
+.complaintsTitle {
   text-align: center;
+  font-size: 34px;
+  font-weight: 700;
+  margin-bottom: 50px;
 }
 
-.complaintFooter {
+/* ---------- GRID ---------- */
+.complaintsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* ---------- CARD (GLASS STYLE) ---------- */
+.complaintCard {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 4, 4, 0.25),
+    rgba(255, 255, 255, 0.12)
+  );
+
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+
+  border-radius: 18px;
+  padding: 22px;
+
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
+  transition: all 0.35s ease;
+}
+
+.complaintCard:hover {
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: 0 35px 70px rgba(1, 235, 32, 0.35);
+}
+
+/* ---------- CARD TOP ---------- */
+.cardTop {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  flex-direction: column;
-  gap: 20px;
 }
 
-.complaintFooter button {
-  background-color: #007bff;
-  color: white;
+.cardTop h3 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+/* ---------- STATUS BADGE ---------- */
+.statusBadge {
+  background: rgba(253, 224, 71, 0.9);
+  color: #78350f;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+/* ---------- DESCRIPTION ---------- */
+.description {
+  margin: 16px 0;
+  font-size: 20px;
+  line-height: 1.6;
+  color: #ffffff;
+  opacity: 1;
+}
+
+/* ---------- CARD BOTTOM ---------- */
+.cardBottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.upvotes {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+/* ---------- BUTTON ---------- */
+.upvoteBtn {
+  background: #2022ad;
+  color: rgb(255, 255, 255);
   border: none;
-  border-radius: 6px;
-  padding: 5px 10px;
+  padding: 8px 16px;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 600;
   cursor: pointer;
-  transition: background 0.2s;
 }
 
-.complaintFooter button:hover {
-  background-color: #0056b3;
+.upvoteBtn:hover {
+  background: #4f46e5;
 }
