@@ -1,33 +1,56 @@
-.adminLoginContainer {
+.adminLoginBg {
+  min-height: 100vh;
   display: flex;
-  flex-direction: column;
   align-items: center;
-  margin-top: 80px;
+  justify-content: center;
+  background: linear-gradient(to right, #6dd5fa, #8e2de2);
 }
 
-.adminForm {
+.loginCard {
+  background: rgba(255, 255, 255, 0.15);
+  padding: 40px;
+  border-radius: 20px;
+  width: 350px;
+  backdrop-filter: blur(15px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  color: white;
+}
+
+.loginTitle {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.inputGroup {
+  margin-bottom: 20px;
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  width: 280px;
 }
 
-.adminForm input {
-  padding: 10px;
-  border-radius: 6px;
-  border: 1px solid #ccc;
+.inputGroup label {
+  margin-bottom: 5px;
+  font-size: 14px;
 }
 
-.adminForm button {
+.inputGroup input {
   padding: 10px;
-  background: #007bff;
-  color: white;
+  border-radius: 8px;
   border: none;
-  border-radius: 6px;
-  cursor: pointer;
+  outline: none;
 }
 
-.loginMessage {
-  margin-top: 10px;
-  font-weight: bold;
+.loginBtn {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  background: #4caf50;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.loginBtn:hover {
+  background: #388e3c;
 }

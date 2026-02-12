@@ -3,7 +3,12 @@ import { useNavigate } from "react-router-dom";
 import "./adminLogin.css";
 
 function AdminLogin() {
-  const [form, setForm] = useState({ userId: "", password1: "", password2: "" });
+  const [form, setForm] = useState({
+    userId: "",
+    password1: "",
+    password2: "",
+  });
+
   const [message, setMessage] = useState("");
   const navigate = useNavigate();
 
@@ -17,15 +22,15 @@ function AdminLogin() {
         const res = await fetch("http://localhost:5000/api/admin/home", {
           headers: { Authorization: `Bearer ${token}` },
         });
+
         const data = await res.json();
 
         if (res.ok && data.success) {
           navigate("/admin/home");
         } else {
-          localStorage.removeItem("adminToken"); // token invalid → clear it
+          localStorage.removeItem("adminToken");
         }
       } catch (err) {
-        console.error("Token verification failed:", err);
         localStorage.removeItem("adminToken");
       }
     };
@@ -33,7 +38,8 @@ function AdminLogin() {
     verifyToken();
   }, [navigate]);
 
-  const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
+  const handleChange = (e) =>
+    setForm({ ...form, [e.target.name]: e.target.value });
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -60,15 +66,51 @@ function AdminLogin() {
   };
 
   return (
-    <div className="adminLoginContainer">
-      <h2>Admin Login</h2>
-      <form onSubmit={handleSubmit} className="adminForm">
-        <input type="text" name="userId" placeholder="User ID" value={form.userId} onChange={handleChange} required />
-        <input type="password" name="password1" placeholder="Password 1" value={form.password1} onChange={handleChange} required />
-        <input type="password" name="password2" placeholder="Password 2" value={form.password2} onChange={handleChange} required />
-        <button type="submit">Login</button>
-      </form>
-      {message && <p className="loginMessage">{message}</p>}
+    <div className="adminLoginBg">
+      <div className="loginCard">
+        <h2 className="loginTitle">Admin Login</h2>
+
+        <form onSubmit={handleSubmit}>
+          <div className="inputGroup">
+            <label>User ID</label>
+            <input
+              type="text"
+              name="userId"
+              value={form.userId}
+              onChange={handleChange}
+              placeholder="Enter Admin ID"
+            />
+          </div>
+
+          <div className="inputGroup">
+            <label>Password 1</label>
+            <input
+              type="password"
+              name="password1"
+              value={form.password1}
+              onChange={handleChange}
+              placeholder="Enter Password 1"
+            />
+          </div>
+
+          <div className="inputGroup">
+            <label>Password 2</label>
+            <input
+              type="password"
+              name="password2"
+              value={form.password2}
+              onChange={handleChange}
+              placeholder="Enter Password 2"
+            />
+          </div>
+
+          <button type="submit" className="loginBtn">
+            Login
+          </button>
+
+          {message && <p className="errorMsg">{message}</p>}
+        </form>
+      </div>
     </div>
   );
 }
